@@ -13,8 +13,8 @@ export default function Incidents() {
     const [incidents, setIncidents] = useState([]);
     const [total, setTotal] = useState(0);
     const [page, setPage] = useState(1);
-    const [locading, setLoading] = useState(false);
-
+    const [loading, setLoading] = useState(false);
+    
     const navigation = useNavigation();
 
     function navigateToDetail(incident){
@@ -29,9 +29,7 @@ export default function Incidents() {
         if(total > 0 && incidents.length == total){
             return;
         }
-
         setLoading(true);
-        
         const response = await api.get('incidents',{
             params: {page}
         });
