@@ -20,7 +20,7 @@ export default function Detail() {
     }
     
     function sendWhatsApp(){
-        Linking.openURL(`whatsapp://send?phone=${incident.whatsapp}=${message}`)
+        Linking.openURL(`whatsapp://send?phone=${incident.whatsapp}&text=${message}`);
         
     }
 
@@ -48,7 +48,7 @@ export default function Detail() {
                 <Text style={styles.incidentValue}> {incident.name} de {incident.city}/{incident.uf} </Text>
 
                 <Text style={styles.incidentProperty}> CASO:  </Text>
-                <Text style={styles.incidentValue}> {incident.title}  </Text>
+                <Text style={styles.incidentValue}> {incident.title} - {incident.description} </Text>
 
                 <Text style={styles.incidentProperty}> Valor:  </Text>
                 <Text style={styles.incidentValue}> 
@@ -69,14 +69,8 @@ export default function Detail() {
                     <TouchableOpacity style={styles.action} onPress={sendMail}>
                         <Text style={styles.actionText}> E-mail </Text>
                     </TouchableOpacity>
-
-
                 </View>
-
-
             </View>
-
-
         </View>
     );
 

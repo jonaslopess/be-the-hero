@@ -12,6 +12,7 @@ import styles from './styles';
 export default function Incidents() {
     const [incidents, setIncidents] = useState([]);
     const [total, setTotal] = useState(0);
+
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     
@@ -34,7 +35,7 @@ export default function Incidents() {
             params: {page}
         });
         setIncidents([...incidents, ...response.data]);
-        setTotal(response.headers['x-total-counts']);
+        setTotal(response.headers['x-total-count']);
         setPage(page+1);
         setLoading(false);
     }
@@ -44,6 +45,7 @@ export default function Incidents() {
     },[]);
 
     return (
+        
         <View style={styles.container}>
             <View style={styles.header}>
                 <Image source={logoImg} />
